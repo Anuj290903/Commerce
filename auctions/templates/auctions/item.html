@@ -1,0 +1,20 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <img src = "{{ item.image_url }}">
+    <h1> {{item.title}} </h1>
+    <p> {{item.description}} </p>
+    <div> Seller : {{item.seller}}</div>
+    <div> Starting Price: {{item.starting_bid}} </div>
+    {% if item.category != None %}
+        <div> Category: <a href="{% url 'category' item.category %}"> {{ item.category }} </a> </div>
+        <br>
+    {% endif %}    
+    <h2> Bids </h2>
+        {% for bid in bids %}
+        <div style="padding: 10px"> {{bid.bid}} </div> 
+        <div> - By {{bid.bidder}} </div> <br>
+        {% endfor %}
+
+
+{% endblock %}    

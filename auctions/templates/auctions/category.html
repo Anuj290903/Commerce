@@ -1,0 +1,14 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h1> {{title}} </h1>
+    <ul>
+        {% for item in items %}
+                <a href="{% url 'item' item.id %}"> <h3>{{ item.title }} </h3> </a> <br>
+                <img src = "{{ item.image_url }}">
+                Description: {{item.description}}
+                Price: {{ item.starting_bid }} <br>
+                Created by: {{ item.seller }} <br>
+        {% endfor %}
+    </ul>
+{% endblock %}
