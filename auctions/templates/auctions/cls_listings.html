@@ -1,15 +1,16 @@
 {% extends "auctions/layout.html" %}
 
 {% block body %}
-    <h1> {{title}} </h1>
+    <h2>Closed Listings</h2>
     <ul>
-        {% for item in items %}
+        {% for item in list %}
                 <a href="{% url 'item' item.id %}"> <h3>{{ item.title }} </h3> </a> <br>
                 {% if item.image %}
                     <img src="{{ item.image.url }}" alt="image" width="250" height="150">
                 {% endif %}
-                Description: {{item.description}}
+                <br>
                 Price: {{ item.starting_bid }} <br>
+                Category: <a href="{% url 'category' item.category %}"> {{ item.category }} </a> <br>
                 Created by: {{ item.seller }} <br>
         {% endfor %}
     </ul>

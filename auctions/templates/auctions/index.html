@@ -5,9 +5,12 @@
     <ul>
         {% for item in list %}
                 <a href="{% url 'item' item.id %}"> <h3>{{ item.title }} </h3> </a> <br>
-                <img src = "{{ item.image_url }}">
+                {% if item.image %}
+                    <img src="{{ item.image.url }}" alt="image" width="250" height="150">
+                {% endif %} 
+                <br>
                 Price: {{ item.starting_bid }} <br>
-                Category: <a href="{% url 'category' name='item.category' %}"> {{ item.category }} </a> <br>
+                Category: <a href="{% url 'category' item.category %}"> {{ item.category }} </a> <br>
                 Created by: {{ item.seller }} <br>
         {% endfor %}
     </ul>

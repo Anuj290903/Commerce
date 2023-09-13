@@ -3,8 +3,8 @@
 {% block body %}
     <h2>Categories</h2>
     <ul>
-        {% for category in categories %}
-                <li><a href="{% url 'category' name='category.name' %}"> {{ category.name }} </a> </li> <br>
+        {% for cat in categories %}
+                <li>  <a href="{% url 'category' cat.name %}"> {{ cat.name }} </a> </li> <br>
         {% endfor %}
     </ul>
 {% endblock %}

@@ -1,0 +1,31 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+
+<h1> {{user.username}}</h1>
+<h3> Name : {{user.first_name}} {{user.last_name}}</h3>
+<h3> Email: {{user.email}}</h3>
+
+<h2>Active Listings</h2>
+<ul>
+    {% for item in listing %}
+            <a href="{% url 'item' item.id %}"> <h3>{{ item.title }} </h3> </a> <br>
+
+            {% if item.image %}
+                <img src="{{ item.image.url }}" alt="image" width="250" height="150">
+            {% endif %}
+            <br>
+            Price: {{ item.starting_bid }} <br>
+    {% endfor %}
+</ul>
+
+<h2>Won Listings</h2>
+<ul>
+    {% for item in winning %}
+            <a href="{% url 'item' item.id %}"> <h3>{{ item.title }} </h3> </a> <br>
+            <img src = "{{ item.image.url }}">
+            Price: {{ item.fin_price }} <br>
+    {% endfor %}
+</ul>
+
+{% endblock %}

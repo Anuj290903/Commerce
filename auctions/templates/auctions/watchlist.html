@@ -1,0 +1,15 @@
+{% extends "auctions/layout.html" %}
+
+{% block body %}
+    <h1> Watchlist </h1>
+    {% for obj in list %}
+        <a href="{% url 'item' obj.item.id %}"> <h3>{{ obj.item.title }} </h3> </a> <br>
+        {% if obj.item.image %}
+            <img src="{{ item.image.url }}" alt="image" width="250" height="150">
+        {% endif %}
+        <br>
+        Price: {{ obj.item.starting_bid }} <br>
+        Category: <a href="{% url 'category' obj.item.category %}"> {{ obj.item.category }} </a> <br>
+        Created by: {{ obj.item.seller }} <br>
+    {% endfor %}
+{% endblock %}

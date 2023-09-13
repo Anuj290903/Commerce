@@ -2,7 +2,7 @@
 
 {% block body %}
     <h1> {{message}} </h1>
-    <form action="{% url 'create' %}" method="POST">
+    <form action="{% url 'create_cat' %}" method="POST">
         {% csrf_token %}
         {{form}}
         <input type="submit" value="Submit">
