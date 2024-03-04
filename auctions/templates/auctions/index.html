@@ -1,17 +1,21 @@
 {% extends "auctions/layout.html" %}
-
+{% load static %}
 {% block body %}
-    <h2>Active Listings</h2>
+    <div id="root" style="display: flex; justify-content: center; align-items: center;"></div>
+    <br>
+    <h4><a href="{% url 'create' %}">Create a new listing</a></h4>
+    <br>
+    <script src="{% static 'bundle.js' %}"></script>
     <ul>
         {% for item in list %}
-                <a href="{% url 'item' item.id %}"> <h3>{{ item.title }} </h3> </a> <br>
-                {% if item.image %}
-                    <img src="{{ item.image.url }}" alt="image" width="250" height="150">
-                {% endif %} 
-                <br>
-                Price: {{ item.starting_bid }} <br>
-                Category: <a href="{% url 'category' item.category %}"> {{ item.category }} </a> <br>
-                Created by: {{ item.seller }} <br>
+            <a href="{% url 'item' item.id %}"> <h3>{{ item.title }} </h3> </a> <br>
+            {% if item.image %}
+                <img src="{{ item.image.url }}" alt="image" width="250" height="150">
+            {% endif %} 
+            <br>
+            Price: {{ item.starting_bid }} <br>
+            Category: <a href="{% url 'category' item.category %}"> {{ item.category }} </a> <br>
+            Created by: {{ item.seller }} <br>
         {% endfor %}
     </ul>
 {% endblock %}

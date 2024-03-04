@@ -60,6 +60,9 @@ def create(request):
     if request.method == 'POST':
         form = AuctionListingForm(request.POST, request.FILES)
         if form.is_valid():
+            # Upload the image
+            print(request.FILES)  # Check if the image file is present in request.FILES
+            print(form.cleaned_data)  # Check the cleaned form data
             new_l = form.save(commit=False)
             new_l.seller = request.user
             new_l.active = True

@@ -2,9 +2,10 @@
 
 {% block body %}
     <h1> {{message}} </h1>
-    <form action="{% url 'create' %}" method="POST">
+    <form enctype="multipart/form-data" action="{% url 'create' %}" method="POST">
         {% csrf_token %}
         {{form}}
         <input type="submit" value="Submit">
     </form>
+    <h6> <a href="{% url 'create_cat' %}"> Add a new category </a></h6>
 {% endblock %}
